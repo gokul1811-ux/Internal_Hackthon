@@ -40,7 +40,7 @@ app.get('/api/health', (req, res) => {
 const clientBuildPath = path.join(__dirname, '../client/dist');
 app.use(express.static(clientBuildPath));
 
-app.get('*', (req, res) => {
+app.get('/{*splat}', (req, res) => {
   if (req.path.startsWith('/api')) {
     return res.status(404).json({ error: 'API endpoint not found' });
   }
@@ -57,10 +57,15 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error', details: err.message });
 });
 
-app.listen(PORT, () => {
-  console.log(`=======================================================`);
-  console.log(` SmartCare Server running on http://localhost:${PORT}`);
-  console.log(` Demo Doctor Credentials:  doctor@smartcare.demo  / password123`);
-  console.log(` Demo Patient Credentials: patient@smartcare.demo / password123`);
-  console.log(`=======================================================`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`=======================================================`);
+    console.log(` SmartCare Server running on http://localhost:${PORT}`);
+    console.log(` Demo Doctor Credentials: doctor@smartcare.demo / password123`);
+    console.log(` Demo Patient Credentials: patient@smartcare.demo / password123`);
+    console.log(`=======================================================`);
+  });
+}
+
+module.exports = app;
+
