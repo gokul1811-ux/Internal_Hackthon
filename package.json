@@ -8,12 +8,23 @@
     "server": "npm --prefix server start",
     "client": "npm --prefix client dev",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm --prefix client build"
+    "build": "npm --prefix client run build"
   },
-  "keywords": ["healthcare", "patient-queue", "symptom-ai", "medicine-reminder"],
+  "keywords": [
+    "healthcare",
+    "patient-queue",
+    "symptom-ai",
+    "medicine-reminder"
+  ],
   "author": "SmartCare Team",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
   }
 }
