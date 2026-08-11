@@ -1,0 +1,19 @@
+{
+  "name": "smart-patient-queue-system",
+  "version": "1.0.0",
+  "description": "Smart Patient Queue & Medicine Reminder System with AI-Based Symptom Recognition",
+  "main": "server/index.js",
+  "scripts": {
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "server": "npm --prefix server start",
+    "client": "npm --prefix client dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm --prefix client build"
+  },
+  "keywords": ["healthcare", "patient-queue", "symptom-ai", "medicine-reminder"],
+  "author": "SmartCare Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
